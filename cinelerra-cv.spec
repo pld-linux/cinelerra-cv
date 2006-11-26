@@ -6,7 +6,7 @@ Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl):	Cinelerra - nagrywanie, obróbka i produkcja materia³u audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 License:	GPL
 Group:		X11/Applications
 # svn://svn.skolelinux.org/cinelerra/trunk/hvirtual
@@ -99,6 +99,7 @@ touch config.rpath
 %{__autoconf}
 
 %configure \
+	--disable-opengl \
 %ifarch ppc
 	--enable-altivec \
 %endif
@@ -120,6 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_libdir}/cinelerra/fonts
+
 %find_lang cinelerra
 
 %clean
@@ -136,6 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/cinelerra/*.so
 %{_libdir}/cinelerra/*.la
 %{_libdir}/cinelerra/shapewipe
+%{_libdir}/cinelerra/fonts
 %attr(755,root,root) %{_libdir}/lib*.so.*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*.*
