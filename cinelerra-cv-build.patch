@@ -1,0 +1,11 @@
+--- cinelerra-cv-2.1/cinelerra/Makefile.am.org	2006-11-26 01:42:58.101122750 +0100
++++ cinelerra-cv-2.1/cinelerra/Makefile.am	2006-11-26 01:43:09.741850250 +0100
+@@ -29,7 +29,7 @@
+ 	echo '#define REPOABOUTPREFTXT "SVN Version: $(SVNVERSION) $(BUILDINFO_NONRC_S)"' >> versioninfo.h
+ 
+ else # (no repository)
+-	echo '#define REPOMAINTXT      "(C) 2006 Heroine Virtual Ltd.\nCompiled on $(BUILDDATE)"' >> versioninfo.h
++	echo '#define REPOMAINTXT      "(C) 2006 Heroine Virtual Ltd. Compiled on $(BUILDDATE)"' >> versioninfo.h
+ 	echo '#define REPOABOUTPREFTXT ""' >> versioninfo.h
+ endif
+ endif
