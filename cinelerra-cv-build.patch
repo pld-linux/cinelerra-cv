@@ -1,3 +1,18 @@
+--- cinelerra-cv-2.1/configure.in.org	2006-11-26 03:33:50.056844000 +0100
++++ cinelerra-cv-2.1/configure.in	2006-11-26 03:33:55.053156250 +0100
+@@ -7,7 +7,11 @@
+ 
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADER(config.h)
+-AM_GNU_GETTEXT([external])
++
++AC_PROG_CC
++AC_GNU_SOURCE
++
++AM_GNU_GETTEXT
+ AM_GNU_GETTEXT_VERSION(0.12.1)
+ AM_PROG_AS
+ 
 --- cinelerra-cv-2.1/cinelerra/Makefile.am.org	2006-11-26 01:42:58.101122750 +0100
 +++ cinelerra-cv-2.1/cinelerra/Makefile.am	2006-11-26 01:43:09.741850250 +0100
 @@ -29,7 +29,7 @@
