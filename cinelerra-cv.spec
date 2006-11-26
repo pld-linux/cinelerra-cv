@@ -6,7 +6,7 @@ Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl):	Cinelerra - nagrywanie, obróbka i produkcja materia³u audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.2
+Release:	0.%{snap}.3
 License:	GPL
 Group:		X11/Applications
 # svn://svn.skolelinux.org/cinelerra/trunk/hvirtual
@@ -22,7 +22,7 @@ BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
-#BuildRequires:	lame-libs-devel >= 3.93.1
+BuildRequires:	lame-libs-devel >= 3.93.1
 BuildRequires:	libavc1394-devel >= 0.5.1
 BuildRequires:	libiec61883-devel >= 1.0.0
 #BuildRequires:	libmpeg3-devel >= 1.7
@@ -99,7 +99,6 @@ touch config.rpath
 %{__autoconf}
 
 %configure \
-	--disable-opengl \
 %ifarch ppc
 	--enable-altivec \
 %endif
