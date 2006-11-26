@@ -21,6 +21,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	freetype-devel >= 2.1.4
+BuildRequires:	gettext-devel
 #BuildRequires:	lame-libs-devel >= 3.93.1
 BuildRequires:	libavc1394-devel >= 0.5.1
 BuildRequires:	libiec61883-devel >= 1.0.0
@@ -88,10 +89,11 @@ Wersja Spo³eczno¶ciowa.
 %patch0 -p1
 
 %build
-rm -rf m4/*.m4 *.m4
+rm -f m4/*.m4 *.m4
 touch config.rpath
-%{__aclocal}
+%{__gettextize}
 %{__libtoolize}
+%{__aclocal} -I m4
 %{__autoheader}
 %{__automake}
 %{__autoconf}
