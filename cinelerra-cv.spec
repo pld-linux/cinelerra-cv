@@ -20,6 +20,7 @@ BuildRequires:	alsa-lib-devel >= 1.0.8
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
+BuildRequires:	ffmpeg-devel
 BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
 BuildRequires:	lame-libs-devel >= 3.93.1
