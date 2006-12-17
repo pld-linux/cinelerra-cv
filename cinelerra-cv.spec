@@ -15,16 +15,19 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-build.patch
 URL:		http://cvs.cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
-#BuildRequires:	OpenGL-devel >= 2.0
+BuildRequires:	OpenGL-devel
+BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel >= 1.0.8
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	ffmpeg-devel
+BuildRequires:	fftw3-devel
 BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
 BuildRequires:	lame-libs-devel >= 3.93.1
 BuildRequires:	libavc1394-devel >= 0.5.1
+BuildRequires:	libdv-devel
 BuildRequires:	libiec61883-devel >= 1.0.0
 #BuildRequires:	libmpeg3-devel >= 1.7
 BuildRequires:	libraw1394-devel >= 1.2.0
@@ -34,6 +37,7 @@ BuildRequires:	libtheora-devel >= 1.0-0.alpha4
 BuildRequires:	libtiff-devel >= 3.5.7
 BuildRequires:	libtool
 BuildRequires:	libuuid-devel
+BuildRequires:	mjpegtools-devel
 %ifarch %{ix86}
 BuildRequires:	nasm
 %endif
