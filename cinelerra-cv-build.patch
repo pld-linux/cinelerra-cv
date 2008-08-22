@@ -24,3 +24,25 @@
  	echo '#define REPOABOUTPREFTXT ""' >> versioninfo.h
  endif
  endif
+
+--- cinelerra/configure.in~	2008-08-22 23:54:27.115850559 +0200
++++ cinelerra/configure.in	2008-08-22 23:58:19.452702168 +0200
+@@ -300,6 +300,7 @@
+      PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc])
+      FFMPEG_FOLDER=""
+      FFMPEG_EXTERNALTEXT="External ffmpeg"
++     FFMPEG_CFLAGS="-I/usr/include/libavcodec"
+ else
+      FFMPEG_FOLDER=ffmpeg
+      FFMPEG_CFLAGS="-I\$(srcdir)/ffmpeg/libavcodec"
+--- cinelerra-cv-2.1/cinelerra/playback3d.h~	2006-11-26 00:41:51.000000000 +0100
++++ cinelerra-cv-2.1/cinelerra/playback3d.h	2008-08-23 00:02:01.015805393 +0200
+@@ -225,7 +225,7 @@
+ // output - passed when rendering refresh frame.  If 0, the canvas is cleared.
+ 	void clear_output(Canvas *canvas, VFrame *output);
+ 
+-	void do_fade(Canvas *canvas, VFrame *fade, float fade);
++	void do_fade(Canvas *canvas, VFrame *fade, float fadex);
+ 
+ 	void do_mask(Canvas *canvas,
+ 		VFrame *output, 
