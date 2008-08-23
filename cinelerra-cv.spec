@@ -88,7 +88,7 @@ modyfikacji formatu, co czyni program bardzo złożonym.
 
 Cinelerra była tworzona z myślą o zastąpieniu programu Broadcast 2000.
 
-Wersja Społecznościowa.
+Wersja społecznościowa.
 
 %prep
 %setup -q
