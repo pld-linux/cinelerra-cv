@@ -6,7 +6,7 @@ Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.8
+Release:	0.%{snap}.9
 License:	GPL
 Group:		X11/Applications
 # svn://svn.skolelinux.org/cinelerra/trunk/hvirtual
@@ -94,7 +94,7 @@ Wersja Społecznościowa.
 %setup -q
 %patch0 -p1
 
-find . -name Makefile.am -exec sed -e 's#^LIBTOOL =.*##g' "{}" ";"
+find . -name Makefile.am -exec sed -i -e 's#^LIBTOOL =.*##g' "{}" ";"
 
 %build
 rm -f m4/*.m4 *.m4
