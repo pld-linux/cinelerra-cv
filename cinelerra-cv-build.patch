@@ -46,3 +46,24 @@
  
  	void do_mask(Canvas *canvas,
  		VFrame *output, 
+
+--- cinelerra-cv-2.1/libmpeg3/video/Makefile.am	2008-08-23 14:53:19.959321239 +0000
++++ cinelerra-cv-2.1/libmpeg3/video/Makefile.am.org	2008-08-23 14:53:15.609327436 +0000
+@@ -11,6 +11,7 @@
+ 
+ if USEMMX
+ libmpeg3_video_la_SOURCES += mmxidct.S reconmmx.s
++AM_LIBTOOLFLAGS=--tag=CC
+ else
+ libmpeg3_video_la_SOURCES +=
+ endif
+--- cinelerra-cv-2.1/mpeg2enc/Makefile.am~	2008-08-23 16:56:56.992840914 +0200
++++ cinelerra-cv-2.1/mpeg2enc/Makefile.am	2008-08-23 17:00:05.433238449 +0200
+@@ -17,6 +17,7 @@
+ libmpeg2enc_la_SOURCES +=     fdct_mmx.s fdctdata.c idct_mmx.s idctdata.c \
+     quant_mmx.s quantize_x86.c predict_mmx.s \
+     predcomp_mmxe.s predcomp_mmx.s
++AM_LIBTOOLFLAGS=--tag=CC
+ endif
+ 
+ noinst_HEADERS = attributes.h \
