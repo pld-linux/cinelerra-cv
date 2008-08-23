@@ -94,7 +94,7 @@ Wersja Społecznościowa.
 %setup -q
 %patch0 -p1
 
-find . -name Makefile.am -exec sed -i -e 's#^LIBTOOL =.*##g' "{}" ";"
+find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
 
 %build
 rm -f m4/*.m4 *.m4
