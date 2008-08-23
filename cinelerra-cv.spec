@@ -21,7 +21,6 @@ BuildRequires:	alsa-lib-devel >= 1.0.8
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
-BuildRequires:	findutils
 BuildRequires:	ffmpeg-devel
 BuildRequires:	fftw3-devel
 BuildRequires:	freetype-devel >= 2.1.4
@@ -43,6 +42,7 @@ BuildRequires:	mjpegtools-devel
 BuildRequires:	nasm
 %endif
 #BuildRequires:	quicktime4linux-devel >= 2.2
+BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXv-devel
