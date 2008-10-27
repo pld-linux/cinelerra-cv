@@ -1,17 +1,17 @@
 # TODO:
 # - external libraries packages (is there any sense in that?)
 #
-%define	snap	20061125
+%define	snap	20081019
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.10
+Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications
-# svn://svn.skolelinux.org/cinelerra/trunk/hvirtual
-Source0:	%{name}-%{version}.tar.gz
-# Source0-md5:	89a039be86acab89ed392ce987dea2c8
+# git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
+Source0:	%{name}-%{snap}.tar.bz2
+# Source0-md5:	f245edd962e1f34d839b6ea2da46ab32
 Patch0:		%{name}-build.patch
 URL:		http://cvs.cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
@@ -91,7 +91,7 @@ Cinelerra była tworzona z myślą o zastąpieniu programu Broadcast 2000.
 Wersja społecznościowa.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
@@ -107,6 +107,7 @@ touch config.rpath
 %{__autoconf}
 
 %configure \
+	CPPFLAGS="%{rpmcppflags} -I/usr/include/freetype2" \
 %ifarch ppc
 	--enable-altivec \
 %endif
