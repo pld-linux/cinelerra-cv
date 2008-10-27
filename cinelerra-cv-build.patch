@@ -15,38 +15,37 @@
  
 --- cinelerra-cv-2.1/cinelerra/Makefile.am.org	2006-11-26 01:42:58.101122750 +0100
 +++ cinelerra-cv-2.1/cinelerra/Makefile.am	2006-11-26 01:43:09.741850250 +0100
-@@ -29,7 +29,7 @@
+@@ -19,26 +19,26 @@
+ 
+ if BUILDINFO_GIT
+ GITVERSION=$(shell if [ -d $(top_srcdir)/.git ]; then cd $(top_srcdir); git rev-parse HEAD; else echo "unknown"; fi)
+-	echo '#define REPOMAINTXT " GIT::$(GITVERSION) $(BUILDINFO_NONRC_S) (C) 2006 Heroine Virtual Ltd.\n@FFMPEG_EXTERNALTEXT@\nCompiled on $(BUILDDATE)"' >> versioninfo.h
++	echo '#define REPOMAINTXT " GIT::$(GITVERSION) $(BUILDINFO_NONRC_S) (C) 2006 Heroine Virtual Ltd. @FFMPEG_EXTERNALTEXT@ Compiled on $(BUILDDATE)"' >> versioninfo.h
+ 	echo '#define REPOABOUTPREFTXT "Git SHA-1: $(GITVERSION)"' >> versioninfo.h
+ else
+ 
+ if BUILDINFO_SVN
+ SVNVERSION=$(shell if [ -d $(top_srcdir)/.svn ]; then svnversion $(top_srcdir); else echo "unknown"; fi)
+-	echo '#define REPOMAINTXT      " SVN $(SVNVERSION) $(BUILDINFO_NONRC_S) (C) 2006 Heroine Virtual Ltd.\n@FFMPEG_EXTERNALTEXT@\nCompiled on $(BUILDDATE)"' >> versioninfo.h
++	echo '#define REPOMAINTXT      " SVN $(SVNVERSION) $(BUILDINFO_NONRC_S) (C) 2006 Heroine Virtual Ltd. @FFMPEG_EXTERNALTEXT@ Compiled on $(BUILDDATE)"' >> versioninfo.h
  	echo '#define REPOABOUTPREFTXT "SVN Version: $(SVNVERSION) $(BUILDINFO_NONRC_S)"' >> versioninfo.h
  
+ else
+ if BUILDINFO_CUST
+ 
+-	echo '#define REPOMAINTXT      " $(BUILDINFO_CUSTOM_TAG) (C) 2006 Heroine Virtual Ltd.\n@FFMPEG_EXTERNALTEXT@\nCompiled on $(BUILDDATE)"' >> versioninfo.h
++	echo '#define REPOMAINTXT      " $(BUILDINFO_CUSTOM_TAG) (C) 2006 Heroine Virtual Ltd. @FFMPEG_EXTERNALTEXT@ Compiled on $(BUILDDATE)"' >> versioninfo.h
+ 	echo '#define REPOABOUTPREFTXT "$(BUILDINFO_CUSTOM_TAG)"' >> versioninfo.h
+ 
+ 
  else # (no repository)
+ 
+ 
 -	echo '#define REPOMAINTXT      "(C) 2006 Heroine Virtual Ltd.\nCompiled on $(BUILDDATE)"' >> versioninfo.h
 +	echo '#define REPOMAINTXT      "(C) 2006 Heroine Virtual Ltd. Compiled on $(BUILDDATE)"' >> versioninfo.h
  	echo '#define REPOABOUTPREFTXT ""' >> versioninfo.h
  endif
  endif
-
---- cinelerra/configure.in~	2008-08-22 23:54:27.115850559 +0200
-+++ cinelerra/configure.in	2008-08-22 23:58:19.452702168 +0200
-@@ -300,6 +300,7 @@
-      PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc])
-      FFMPEG_FOLDER=""
-      FFMPEG_EXTERNALTEXT="External ffmpeg"
-+     FFMPEG_CFLAGS="-I/usr/include/libavcodec"
- else
-      FFMPEG_FOLDER=ffmpeg
-      FFMPEG_CFLAGS="-I\$(srcdir)/ffmpeg/libavcodec"
---- cinelerra-cv-2.1/cinelerra/playback3d.h~	2006-11-26 00:41:51.000000000 +0100
-+++ cinelerra-cv-2.1/cinelerra/playback3d.h	2008-08-23 00:02:01.015805393 +0200
-@@ -225,7 +225,7 @@
- // output - passed when rendering refresh frame.  If 0, the canvas is cleared.
- 	void clear_output(Canvas *canvas, VFrame *output);
- 
--	void do_fade(Canvas *canvas, VFrame *fade, float fade);
-+	void do_fade(Canvas *canvas, VFrame *fade, float fadex);
- 
- 	void do_mask(Canvas *canvas,
- 		VFrame *output, 
-
 --- cinelerra-cv-2.1/libmpeg3/video/Makefile.am	2008-08-23 14:53:19.959321239 +0000
 +++ cinelerra-cv-2.1/libmpeg3/video/Makefile.am.org	2008-08-23 14:53:15.609327436 +0000
 @@ -11,6 +11,7 @@
@@ -67,3 +66,29 @@
  endif
  
  noinst_HEADERS = attributes.h \
+--- cv/configure.in.org	2008-10-27 10:15:06.091895546 +0100
++++ cv/configure.in	2008-10-27 10:15:21.304615704 +0100
+@@ -356,12 +356,7 @@
+      dnl if not, that means that libswscale is compiled in
+      
+      AC_MSG_CHECKING(for ffmpeg swscale support)
+-     saved_LIBS="$LIBS"
+-     LIBS="$saved_LIBS $FFMPEG_TEMP_LIBS"
+-     AC_TRY_LINK([#include <libavcodec/avcodec.h>],
+-		 [img_convert(0, 0, 0,0,0,0)],
+-		 enable_ffmpeg_swscale=no,enable_ffmpeg_swscale=yes)
+-     LIBS="$saved_LIBS"
++     enable_ffmpeg_swscale=yes
+      AC_MSG_RESULT($enable_ffmpeg_swscale)
+      if test x"$enable_ffmpeg_swscale" = xyes; then
+ 	     dnl AC_DEFINE(HAVE_SWSCALER)
+--- cv/cinelerra/ffmpeg.C.org	2008-10-27 10:26:46.890782761 +0100
++++ cv/cinelerra/ffmpeg.C	2008-10-27 10:27:19.937445860 +0100
+@@ -2,6 +2,7 @@
+ 
+ #ifdef HAVE_SWSCALER
+ extern "C" {
++#include <avcodec.h>
+ #include <swscale.h>
+ }
+ #endif
