@@ -6,7 +6,7 @@ Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
@@ -47,7 +47,7 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXv-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
-Requires:	OpenEXR-devel >= 1.2.1
+Requires:	OpenEXR >= 1.2.1
 Requires:	alsa-lib >= 1.0.8
 Requires:	freetype >= 2.1.4
 Requires:	libavc1394 >= 0.5.1
