@@ -6,7 +6,7 @@ Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.2
+Release:	0.%{snap}.3
 License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
