@@ -1,12 +1,13 @@
 # TODO:
 # - external libraries packages (is there any sense in that?)
 #
-%define	snap	20090324
+%define		snap	20090324
+%define		rel		4
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
 Version:	2.1
-Release:	0.%{snap}.4
+Release:	0.%{snap}.%{rel}
 License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
