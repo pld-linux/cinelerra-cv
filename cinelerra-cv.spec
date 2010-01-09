@@ -16,6 +16,7 @@ Source0:	%{name}-%{snap}.tar.bz2
 Patch0:		%{name}-build.patch
 URL:		http://cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
+BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel >= 1.0.8
@@ -31,6 +32,7 @@ BuildRequires:	libavc1394-devel >= 0.5.1
 BuildRequires:	libdv-devel
 BuildRequires:	libiec61883-devel >= 1.0.0
 #BuildRequires:	libmpeg3-devel >= 1.7
+BuildRequires:	libpng-devel
 BuildRequires:	libraw1394-devel >= 1.2.0
 BuildRequires:	libsndfile-devel >= 1.0.11
 BuildRequires:	libstdc++-devel >= 5:3.2.2
@@ -39,7 +41,8 @@ BuildRequires:	libtiff-devel >= 3.5.7
 BuildRequires:	libtool
 BuildRequires:	libuuid-devel
 BuildRequires:	mjpegtools-devel
-%ifarch %{ix86}
+BuildRequires:	pkgconfig
+%ifarch %{ix86} %{x8664}
 BuildRequires:	nasm
 %endif
 #BuildRequires:	quicktime4linux-devel >= 2.2
