@@ -99,7 +99,7 @@ Wersja społecznościowa.
 %patch0 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
-%{__sed} -i -e 's/png_check_sig((unsigned char*)test, 8)/!png_sig_cmp((unsigned char*)test, 0, 8)/g' cinelerra/filepng.C
+%{__sed} -i -e 's/png_check_sig((unsigned char\*)test, 8)/!png_sig_cmp((unsigned char\*)test, 0, 8)/g' cinelerra/filepng.C
 
 %build
 rm -f m4/*.m4 *.m4
