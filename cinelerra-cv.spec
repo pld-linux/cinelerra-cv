@@ -2,7 +2,7 @@
 # - external libraries packages (is there any sense in that?)
 #
 %define		snap	20100109
-%define		rel		2
+%define		rel		3
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
@@ -32,7 +32,7 @@ BuildRequires:	libavc1394-devel >= 0.5.1
 BuildRequires:	libdv-devel
 BuildRequires:	libiec61883-devel >= 1.0.0
 #BuildRequires:	libmpeg3-devel >= 1.7
-BuildRequires:	libpng-devel
+BuildRequires:	libpng-devel >= 2:1.4.0
 BuildRequires:	libraw1394-devel >= 1.2.0
 BuildRequires:	libsndfile-devel >= 1.0.11
 BuildRequires:	libstdc++-devel >= 5:3.2.2
@@ -99,6 +99,7 @@ Wersja społecznościowa.
 %patch0 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
+%{__sed} -i -e 's/png_check_sig((unsigned char*)test, 8)/!png_sig_cmp((unsigned char*)test, 0, 8)/g' cinelerra/filepng.C
 
 %build
 rm -f m4/*.m4 *.m4
