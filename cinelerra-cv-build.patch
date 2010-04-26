@@ -92,3 +92,13 @@
  #include <swscale.h>
  }
  #endif
+--- cinelerra-cv/cinelerra/edits.C~	2010-01-09 15:12:19.000000000 +0100
++++ cinelerra-cv/cinelerra/edits.C	2010-04-26 09:13:43.381588613 +0200
+@@ -47,7 +47,6 @@
+ 	this->edl = edl;
+ 	this->track = track;
+ 
+-	List<Edit>::List<Edit>();
+ 	default_edit->edl = edl;
+ 	default_edit->track = track;
+ 	default_edit->startproject = 0;
