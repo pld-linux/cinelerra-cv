@@ -2,7 +2,7 @@
 # - external libraries packages (is there any sense in that?)
 #
 %define		snap	20100109
-%define		rel		6
+%define		rel		7
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
@@ -15,6 +15,7 @@ Source0:	%{name}-%{snap}.tar.bz2
 # Source0-md5:	e130b134a9e691ae36d2bbb117fc530b
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-libpng.patch
+Patch2:		%{name}-desktop.patch
 URL:		http://cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
 BuildRequires:	OpenGL-GLU-devel
@@ -99,6 +100,7 @@ Wersja społecznościowa.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
 %{__sed} -i -e 's/png_check_sig((unsigned char\*)test, 8)/!png_sig_cmp((unsigned char\*)test, 0, 8)/g' cinelerra/filepng.C

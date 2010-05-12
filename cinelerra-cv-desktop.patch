@@ -1,0 +1,11 @@
+--- cinelerra-cv/image/cinelerra.desktop~	2010-01-09 15:12:20.000000000 +0100
++++ cinelerra-cv/image/cinelerra.desktop	2010-05-12 14:31:55.906693310 +0200
+@@ -5,7 +5,7 @@
+ Name[fr]=Cinelerra
+ Name[es]=Cinelerra
+ Comment=Video Editor
+-Categories=Application;AudioVideo;Multimedia;
++Categories=Application;AudioVideo;Video;AudioVideoEditing;
+ Encoding=UTF-8
+ Exec=cinelerra
+ Icon=cinelerra.xpm
