@@ -2,7 +2,7 @@
 # - external libraries packages (is there any sense in that?)
 #
 %define		snap	20100109
-%define		rel		7
+%define		rel		8
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
@@ -24,7 +24,6 @@ BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel >= 1.0.8
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	esound-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	fftw3-devel
 BuildRequires:	freetype-devel >= 2.1.4
@@ -124,6 +123,7 @@ touch config.rpath
 	--enable-mmx \
 	--enable-3dnow \
 %endif
+	--disable-esd \
 	--enable-freetype2 \
 	--with-external-ffmpeg \
 	--with-alsa-prefix=%{_prefix} \
