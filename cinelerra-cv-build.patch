@@ -117,3 +117,14 @@
  	default_edit->edl = edl;
  	default_edit->track = track;
  	default_edit->startproject = 0;
+--- cinelerra-cv/plugins/svg/svg.C~	2010-01-09 15:12:21.000000000 +0100
++++ cinelerra-cv/plugins/svg/svg.C	2010-06-03 17:56:46.125079418 +0200
+@@ -29,6 +29,8 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <sys/mman.h>
++#include <sys/types.h>
++#include <sys/stat.h>
+ 
+ 
+ #include <libintl.h>
