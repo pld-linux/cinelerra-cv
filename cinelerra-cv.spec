@@ -1,8 +1,8 @@
 # TODO:
 # - external libraries packages (is there any sense in that?)
 #
-%define		snap	20100109
-%define		rel		11
+%define		snap	20110406
+%define		rel		1
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
@@ -12,10 +12,11 @@ License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
 Source0:	%{name}-%{snap}.tar.bz2
-# Source0-md5:	e130b134a9e691ae36d2bbb117fc530b
+# Source0-md5:	c41bcabbc0c28b4575f6ff8631effed8
 Patch0:		%{name}-build.patch
-Patch1:		%{name}-libpng.patch
-Patch2:		%{name}-desktop.patch
+Patch1:		%{name}-desktop.patch
+# http://bugs.cinelerra.org/raw-attachment/ticket/949/remove-support-v4l-buzz-k2-6-38.diff
+Patch2:		remove-support-v4l-buzz-k2-6-38.diff
 URL:		http://cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
 BuildRequires:	OpenGL-GLU-devel
@@ -102,7 +103,6 @@ Wersja społecznościowa.
 %patch2 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
-%{__sed} -i -e 's/png_check_sig((unsigned char\*)test, 8)/!png_sig_cmp((unsigned char\*)test, 0, 8)/g' cinelerra/filepng.C
 
 %build
 rm -f m4/*.m4 *.m4
@@ -116,6 +116,7 @@ touch config.rpath
 
 %configure \
 	CPPFLAGS="%{rpmcppflags} -I/usr/include/freetype2" \
+	CXXFLAGS="%{rpmcxxflags} -D__STDC_CONSTANT_MACROS=1" \
 %ifarch ppc
 	--enable-altivec \
 %endif
