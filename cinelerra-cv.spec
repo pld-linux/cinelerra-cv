@@ -1,8 +1,8 @@
 # TODO:
 # - external libraries packages (is there any sense in that?)
 #
-%define		snap	20110406
-%define		rel		2
+%define		snap	20110704
+%define		rel	1
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
@@ -12,7 +12,7 @@ License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
 Source0:	%{name}-%{snap}.tar.bz2
-# Source0-md5:	c41bcabbc0c28b4575f6ff8631effed8
+# Source0-md5:	99a1936170a2e5d211bea0fd628b09ae
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-desktop.patch
 # http://bugs.cinelerra.org/raw-attachment/ticket/949/remove-support-v4l-buzz-k2-6-38.diff
