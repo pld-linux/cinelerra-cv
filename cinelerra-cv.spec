@@ -17,6 +17,7 @@ Patch0:		%{name}-build.patch
 Patch1:		%{name}-desktop.patch
 # http://bugs.cinelerra.org/raw-attachment/ticket/949/remove-support-v4l-buzz-k2-6-38.diff
 Patch2:		remove-support-v4l-buzz-k2-6-38.diff
+Patch3:		%{name}-ffmpeg.patch
 URL:		http://cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
 BuildRequires:	OpenGL-GLU-devel
@@ -101,6 +102,7 @@ Wersja społecznościowa.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
 
