@@ -26,7 +26,7 @@ BuildRequires:	a52dec-libs-devel
 BuildRequires:	alsa-lib-devel >= 1.0.8
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 0.7.1
 BuildRequires:	fftw3-devel
 BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
