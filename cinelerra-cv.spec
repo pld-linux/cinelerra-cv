@@ -1,18 +1,18 @@
 # TODO:
 # - external libraries packages (is there any sense in that?)
 #
-%define		snap	20110704
-%define		rel	7
+%define		snap	20121104
+%define		rel	1
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
-Version:	2.1
+Version:	2.2
 Release:	0.%{snap}.%{rel}
 License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/j6t/cinelerra.git cinelerra-cv
 Source0:	%{name}-%{snap}.tar.bz2
-# Source0-md5:	99a1936170a2e5d211bea0fd628b09ae
+# Source0-md5:	06b92b01fa6ba32ca4622922f2cbaa68
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-desktop.patch
 # http://bugs.cinelerra.org/raw-attachment/ticket/949/remove-support-v4l-buzz-k2-6-38.diff
@@ -101,7 +101,7 @@ Wersja społecznościowa.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 %patch3 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'

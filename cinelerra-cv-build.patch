@@ -1,18 +1,5 @@
 --- cinelerra-cv-2.1/configure.in.org	2006-11-26 03:33:50.056844000 +0100
 +++ cinelerra-cv-2.1/configure.in	2006-11-26 03:33:55.053156250 +0100
-@@ -7,7 +7,11 @@
- 
- AM_INIT_AUTOMAKE
- AC_CONFIG_HEADER(config.h)
--AM_GNU_GETTEXT([external])
-+
-+AC_PROG_CC
-+AC_GNU_SOURCE
-+
-+AM_GNU_GETTEXT
- AM_GNU_GETTEXT_VERSION(0.12.1)
- AM_PROG_AS
- 
 @@ -99,14 +99,6 @@
  	LIBS=`echo "$LIBS" | sed -e s/-lasound//g`
  fi
@@ -85,47 +72,4 @@
  
  
  #include <libintl.h>
---- cinelerra-cv/cinelerra/Makefile.am~	2011-04-06 19:57:22.664917219 +0200
-+++ cinelerra-cv/cinelerra/Makefile.am	2011-04-06 20:02:23.865421062 +0200
-@@ -19,26 +19,26 @@
- 
- if BUILDINFO_GIT
- GITVERSION=$(shell if [ -d $(top_srcdir)/.git ]; then cd $(top_srcdir); git rev-parse HEAD; else echo "unknown"; fi)
--	echo '#define REPOMAINTXT " GIT::$(GITVERSION) $(BUILDINFO_NONRC_S) (C) 2010 Heroine Virtual Ltd.\n@FFMPEG_EXTERNALTEXT@\nCompiled on $(BUILDDATE)"' >> versioninfo.h
-+	echo '#define REPOMAINTXT " GIT::$(GITVERSION) $(BUILDINFO_NONRC_S) (C) 2010 Heroine Virtual Ltd. @FFMPEG_EXTERNALTEXT@ Compiled on $(BUILDDATE)"' >> versioninfo.h
- 	echo '#define REPOABOUTPREFTXT "Git SHA-1: $(GITVERSION)"' >> versioninfo.h
- else
- 
- if BUILDINFO_SVN
- SVNVERSION=$(shell if [ -d $(top_srcdir)/.svn ]; then svnversion $(top_srcdir); else echo "unknown"; fi)
--	echo '#define REPOMAINTXT      " SVN $(SVNVERSION) $(BUILDINFO_NONRC_S) (C) 2010 Heroine Virtual Ltd.\n@FFMPEG_EXTERNALTEXT@\nCompiled on $(BUILDDATE)"' >> versioninfo.h
-+	echo '#define REPOMAINTXT      " SVN $(SVNVERSION) $(BUILDINFO_NONRC_S) (C) 2010 Heroine Virtual Ltd. @FFMPEG_EXTERNALTEXT@ Compiled on $(BUILDDATE)"' >> versioninfo.h
- 	echo '#define REPOABOUTPREFTXT "SVN Version: $(SVNVERSION) $(BUILDINFO_NONRC_S)"' >> versioninfo.h
- 
- else
- if BUILDINFO_CUST
- 
--	echo '#define REPOMAINTXT      " $(BUILDINFO_CUSTOM_TAG) (C) 2010 Heroine Virtual Ltd.\n@FFMPEG_EXTERNALTEXT@\nCompiled on $(BUILDDATE)"' >> versioninfo.h
-+	echo '#define REPOMAINTXT      " $(BUILDINFO_CUSTOM_TAG) (C) 2010 Heroine Virtual Ltd. @FFMPEG_EXTERNALTEXT@ Compiled on $(BUILDDATE)"' >> versioninfo.h
- 	echo '#define REPOABOUTPREFTXT "$(BUILDINFO_CUSTOM_TAG)"' >> versioninfo.h
- 
- 
- else # (no repository)
- 
- 
--	echo '#define REPOMAINTXT      "(C) 2010 Heroine Virtual Ltd.\nCompiled on $(BUILDDATE)"' >> versioninfo.h
-+	echo '#define REPOMAINTXT      "(C) 2010 Heroine Virtual Ltd. Compiled on $(BUILDDATE)"' >> versioninfo.h
- 	echo '#define REPOABOUTPREFTXT ""' >> versioninfo.h
- endif
- endif
---- cinelerra-cv/guicast/Makefile.am~	2011-04-06 20:40:24.939828081 +0200
-+++ cinelerra-cv/guicast/Makefile.am	2011-04-06 20:47:51.613590918 +0200
-@@ -1,7 +1,7 @@
- lib_LTLIBRARIES = libguicast.la
- noinst_PROGRAMS=bootstrap
- 
--libguicast_la_LIBADD = $(OPENGL_LIBS) -lXxf86vm -lXv -lXext -lX11 $(X_EXTRA_LIBS)
-+libguicast_la_LIBADD = $(OPENGL_LIBS) -lXxf86vm -lXv -lXext -lX11 $(X_EXTRA_LIBS) -lpng $(top_builddir)/quicktime/libquicktimehv.la
- libguicast_la_LDFLAGS = $(X_LIBS) -version-info 1:0:0 
- libguicast_la_SOURCES = \
- 	bcbar.C \
+
