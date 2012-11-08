@@ -1,0 +1,69 @@
+diff -ur -x .deps cinelerra-cv.orig/cinelerra/formattools.C cinelerra-cv/cinelerra/formattools.C
+--- cinelerra-cv.orig/cinelerra/formattools.C	2010-03-27 10:32:14.000000000 +0100
++++ cinelerra-cv/cinelerra/formattools.C	2012-11-08 17:23:30.215081904 +0100
+@@ -322,7 +322,7 @@
+ 			*ptr = '.';
+ 		}
+ 		ptr++;
+-		sprintf(ptr, extension);
++		sprintf(ptr, "%s", extension);
+ 
+ 		int character1 = ptr - asset->path;
+ 		int character2 = ptr - asset->path + strlen(extension);
+diff -ur -x .deps cinelerra-cv.orig/cinelerra/record.C cinelerra-cv/cinelerra/record.C
+--- cinelerra-cv.orig/cinelerra/record.C	2010-03-27 10:32:15.000000000 +0100
++++ cinelerra-cv/cinelerra/record.C	2012-11-08 17:24:11.041747132 +0100
+@@ -355,7 +355,7 @@
+ 			if(batch->channel < 0 || batch->channel >= channeldb->size())
+ 				sprintf(string, _("None"));
+ 			else
+-				sprintf(string, channeldb->get(batch->channel)->title);
++				sprintf(string, "%s", channeldb->get(batch->channel)->title);
+ 			break;
+ 	}
+ }
+diff -ur -x .deps cinelerra-cv.orig/guicast/stringfile.C cinelerra-cv/guicast/stringfile.C
+--- cinelerra-cv.orig/guicast/stringfile.C	2010-03-27 10:32:17.000000000 +0100
++++ cinelerra-cv/guicast/stringfile.C	2012-11-08 17:22:50.291749980 +0100
+@@ -230,7 +230,7 @@
+ 	}
+ 	
+ 	for(i = 0; i < indent; i++, pointer++) string[pointer] = ' ';
+-	sprintf(&string[pointer], arg1);
++	sprintf(&string[pointer], "%s", arg1);
+ 	pointer += strlen(arg1);
+ 	return 0;
+ }
+diff -ur -x .deps cinelerra-cv.orig/libmpeg3/mpeg3tocutil.c cinelerra-cv/libmpeg3/mpeg3tocutil.c
+--- cinelerra-cv.orig/libmpeg3/mpeg3tocutil.c	2010-03-27 10:32:17.000000000 +0100
++++ cinelerra-cv/libmpeg3/mpeg3tocutil.c	2012-11-08 17:20:11.405088917 +0100
+@@ -1205,7 +1205,7 @@
+ 
+ // Store file information
+ 	PUT_INT32(FILE_INFO);
+-	fprintf(file->toc_fd, file->fs->path);
++	fprintf(file->toc_fd, "%s", file->fs->path);
+ 	for(j = strlen(file->fs->path); j < MPEG3_STRLEN; j++)
+ 			fputc(0, file->toc_fd);
+ 	PUT_INT64(file->source_date);
+@@ -1236,7 +1236,7 @@
+ // Path
+ 		PUT_INT32(TITLE_PATH);
+ 
+-		fprintf(file->toc_fd, title->fs->path);
++		fprintf(file->toc_fd, "%s", title->fs->path);
+ 
+ // Pad path with 0
+ 		for(j = strlen(title->fs->path); j < MPEG3_STRLEN; j++)
+diff -ur -x .deps cinelerra-cv.orig/mpeg2enc/mpeg2enc.c cinelerra-cv/mpeg2enc/mpeg2enc.c
+--- cinelerra-cv.orig/mpeg2enc/mpeg2enc.c	2010-03-27 10:32:17.000000000 +0100
++++ cinelerra-cv/mpeg2enc/mpeg2enc.c	2012-11-08 17:21:19.281753192 +0100
+@@ -340,7 +340,7 @@
+ void error(text)
+ char *text;
+ {
+-  fprintf(stderr,text);
++  fprintf(stderr,"%s",text);
+   putc('\n',stderr);
+   exit(1);
+ }

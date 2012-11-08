@@ -2,7 +2,7 @@
 # - external libraries packages (is there any sense in that?)
 #
 %define		snap	20121104
-%define		rel	1
+%define		rel	2
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
@@ -18,6 +18,7 @@ Patch1:		%{name}-desktop.patch
 # http://bugs.cinelerra.org/raw-attachment/ticket/949/remove-support-v4l-buzz-k2-6-38.diff
 Patch2:		remove-support-v4l-buzz-k2-6-38.diff
 Patch3:		%{name}-ffmpeg.patch
+Patch4:		%{name}-format-security.patch
 URL:		http://cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
 BuildRequires:	OpenGL-GLU-devel
@@ -103,6 +104,7 @@ Wersja społecznościowa.
 %patch1 -p1
 #%patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
 
