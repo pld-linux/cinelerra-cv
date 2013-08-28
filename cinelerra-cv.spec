@@ -19,6 +19,7 @@ Patch1:		%{name}-desktop.patch
 Patch2:		remove-support-v4l-buzz-k2-6-38.diff
 Patch3:		%{name}-ffmpeg.patch
 Patch4:		%{name}-format-security.patch
+Patch5:		%{name}-ffmpeg2.patch
 URL:		http://cinelerra.org/
 BuildRequires:	OpenEXR-devel >= 1.2.1
 BuildRequires:	OpenGL-GLU-devel
@@ -105,6 +106,7 @@ Wersja społecznościowa.
 #%patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p0
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
 
