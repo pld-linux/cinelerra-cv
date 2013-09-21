@@ -12,7 +12,7 @@ License:	GPL
 Group:		X11/Applications
 # git clone git://git.cinelerra.org/CinelerraCV.git cinelerra-cv
 Source0:	%{name}-%{snap}.tar.bz2
-# Source0-md5:	06b92b01fa6ba32ca4622922f2cbaa68
+# Source0-md5:	86559f96282802d0dc3006817a7c11e3
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-desktop.patch
 # http://bugs.cinelerra.org/raw-attachment/ticket/949/remove-support-v4l-buzz-k2-6-38.diff
