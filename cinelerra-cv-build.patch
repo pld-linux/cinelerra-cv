@@ -84,3 +84,23 @@
  libguicast_la_LDFLAGS = $(X_LIBS) -version-info 1:0:0 
  libguicast_la_SOURCES = \
  	bcbar.C \
+--- cinelerra-cv/cinelerra/vdevicebuz.C~	2013-09-21 22:36:30.000000000 +0200
++++ cinelerra-cv/cinelerra/vdevicebuz.C	2013-11-07 09:02:07.102426371 +0100
+@@ -44,6 +44,7 @@
+ 
+ #include <errno.h>
+ #include <stdint.h>
++#include <string.h>
+ #include <linux/kernel.h>
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+--- cinelerra-cv/cinelerra/videodevice.C~	2013-09-21 22:36:30.000000000 +0200
++++ cinelerra-cv/cinelerra/videodevice.C	2013-11-07 09:02:50.862426055 +0100
+@@ -51,6 +51,7 @@
+ #include "videowindowgui.h"
+ #include "vframe.h"
+ 
++#include <string.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ 
