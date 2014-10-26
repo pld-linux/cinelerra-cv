@@ -2,7 +2,7 @@
 # - external libraries packages (is there any sense in that?)
 #
 %define		snap	20121105
-%define		rel	7
+%define		rel	8
 Summary:	Cinelerra - capturing, editing and production of audio/video material
 Summary(pl.UTF-8):	Cinelerra - nagrywanie, obróbka i produkcja materiału audio/video
 Name:		cinelerra-cv
