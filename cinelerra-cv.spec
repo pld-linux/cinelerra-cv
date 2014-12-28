@@ -31,7 +31,7 @@ BuildRequires:	automake
 BuildRequires:	ffmpeg-devel >= 0.7.1
 BuildRequires:	fftw3-devel
 BuildRequires:	freetype-devel >= 2.1.4
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	lame-libs-devel >= 3.93.1
 BuildRequires:	libavc1394-devel >= 0.5.1
 BuildRequires:	libdv-devel
