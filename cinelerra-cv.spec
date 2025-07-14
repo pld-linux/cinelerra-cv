@@ -101,12 +101,12 @@ Wersja społecznościowa.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 #%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p0
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p0
 
 find -name Makefile.am | xargs %{__sed} -i -e 's#^LIBTOOL =.*##g'
 
